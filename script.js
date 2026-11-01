@@ -112,8 +112,6 @@ function actualizarSelectGeneros(lista) {
 function normalizarTexto(texto) {
     return texto
         .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
         .trim();
 }
 
@@ -273,7 +271,7 @@ escaparate.addEventListener("click", async (e) => {
     try {
         await eliminarPeliculaAPI(URL_API, idPelicula);
     } catch (error) {
-        console.warn("Simulando borrado local en API de solo lectura");
+        console.error("Error al eliminar la película.", error);
     }
 
     peliculas = peliculas.filter((peli) => peli.id !== idPelicula);
@@ -298,7 +296,7 @@ btnCrear.addEventListener("click", async () => {
     try {
         await crearPeliculaAPI(URL_API, nuevaPelicula);
     } catch (error) {
-        console.warn("Simulando creación local en API de solo lectura");
+        console.error("Error al crear la película.", error);
     }
 
     peliculas.unshift(nuevaPelicula);
