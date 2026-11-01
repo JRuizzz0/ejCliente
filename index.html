@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineClick - Catálogo Interactivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="cabecera">
+        <div class="cabecera-contenido">
+            <h1>CineClick</h1>
+            <p>Tu escaparate interactivo de estudio ghibli</p>
+        </div>
+    </header>
+
+    <main class="contenedor-principal">
+        <!-- 1. Panel de Estadísticas -->
+        <section class="panel-estadisticas" id="estadisticas">
+            <article class="stat-card">
+                <span class="stat-label">Total Películas</span>
+                <strong class="stat-valor" id="total-peliculas">0</strong>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Valoración Media</span>
+                <strong class="stat-valor" id="nota-media">0.0</strong>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Mejor Valorada</span>
+                <strong class="stat-valor stat-texto" id="pelicula-max">-</strong>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Peor Valorada</span>
+                <strong class="stat-valor stat-texto" id="pelicula-min">-</strong>
+            </article>
+        </section>
+
+        <!-- 2. Barra de Herramientas: Buscador con Autocompletado y Filtro -->
+        <section class="barra-herramientas">
+            <div class="buscador-contenedor" id="contenedor-buscador">
+                <label for="entrada-busqueda">Buscar película:</label>
+                <input 
+                    type="search" 
+                    id="entrada-busqueda" 
+                    placeholder="Escribe al menos 3 letras (ej. padrino, inter...)" 
+                    autocomplete="off"
+                >
+                <ul id="lista-sugerencias" class="sugerencias" hidden></ul>
+            </div>
+
+            <div class="filtro-contenedor">
+                <label for="filtro-genero">Filtrar por género:</label>
+                <select id="filtro-genero">
+                    <option value="todos">Todos los géneros</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="layout-contenido">
+            <!-- 3. Escaparate Dinámico de Películas -->
+            <section class="seccion-escaparate">
+                <div class="cabecera-seccion">
+                    <h2>Catálogo de Películas</h2>
+                    <button type="button" id="btn-reset" class="btn-secundario">Mostrar todas</button>
+                </div>
+                <div id="escaparate" class="grid-peliculas">
+                    <!-- Las tarjetas se generan dinámicamente -->
+                </div>
+            </section>
+
+            <!-- 4. Formulario de Alta de Películas -->
+            <aside class="seccion-formulario">
+                <h2>Añadir Película</h2>
+                <form id="formulario-pelicula">
+                    <div class="campo">
+                        <label for="titulo">Título:</label>
+                        <input type="text" id="titulo" name="titulo" required placeholder="Ej. Blade Runner">
+                    </div>
+
+                    <div class="campo">
+                        <label for="genero">Género:</label>
+                        <select id="genero" name="genero" required>
+                            <option value="Ciencia Ficción">Ciencia Ficción</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Acción">Acción</option>
+                            <option value="Animación">Animación</option>
+                            <option value="Suspense">Suspense</option>
+                            <option value="Fantasía">Fantasía</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="valoracion">Valoración (0 - 10):</label>
+                        <input type="number" id="valoracion" name="valoracion" min="0" max="10" step="0.1" required placeholder="8.5">
+                    </div>
+
+                    <div class="campo">
+                        <label for="cartel">URL del cartel:</label>
+                        <input type="url" id="cartel" name="cartel" required placeholder="https://...">
+                    </div>
+
+                    <div class="campo">
+                        <label for="sinopsis">Sinopsis:</label>
+                        <textarea id="sinopsis" name="sinopsis" rows="4" required placeholder="Breve descripción de la trama..."></textarea>
+                    </div>
+
+                    <button type="button" id="btn-crear" class="btn-primario">Registrar Película</button>
+                </form>
+            </aside>
+        </div>
+    </main>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
