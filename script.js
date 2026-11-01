@@ -279,7 +279,6 @@ escaparate.addEventListener("click", async (e) => {
 });
 
 btnCrear.addEventListener("click", async () => {
-    if (!formulario.reportValidity()) return;
 
     const datosFormulario = new FormData(formulario);
     const objeto = Object.fromEntries(datosFormulario);
