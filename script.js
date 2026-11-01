@@ -112,6 +112,11 @@ function actualizarSelectGeneros(lista) {
 function normalizarTexto(texto) {
     return texto
         .toLowerCase()
+<<<<<<< HEAD
+=======
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+>>>>>>> ae37bcc5a0dd7c0ea64eb4238e04b76ae478078d
         .trim();
 }
 
@@ -271,7 +276,11 @@ escaparate.addEventListener("click", async (e) => {
     try {
         await eliminarPeliculaAPI(URL_API, idPelicula);
     } catch (error) {
+<<<<<<< HEAD
         console.error("Error al eliminar la película.", error);
+=======
+        console.warn("Simulando borrado local en API de solo lectura");
+>>>>>>> ae37bcc5a0dd7c0ea64eb4238e04b76ae478078d
     }
 
     peliculas = peliculas.filter((peli) => peli.id !== idPelicula);
@@ -296,7 +305,11 @@ btnCrear.addEventListener("click", async () => {
     try {
         await crearPeliculaAPI(URL_API, nuevaPelicula);
     } catch (error) {
+<<<<<<< HEAD
         console.error("Error al crear la película.", error);
+=======
+        console.warn("Simulando creación local en API de solo lectura");
+>>>>>>> ae37bcc5a0dd7c0ea64eb4238e04b76ae478078d
     }
 
     peliculas.unshift(nuevaPelicula);
